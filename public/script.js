@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     // mouse
     var mouse = {
-        click: false,
+        down: false,
         move: false,
         position: { x : 0, y : 0},
         position_previous : false
@@ -18,14 +18,22 @@ $(document).ready(function() {
     canvas[0].width = width;
     canvas[0].height = height;
 
-    // canvas mouse event handlers
+    // canvas mouse down
     canvas.mousedown(function () {
-        console.log("mouse down on canvas");
+        mouse.down = true;
     })
 
+    // canvas mouse up
     canvas.mouseup(function () {
-        console.log("mouse up on canvas");
+        mouse.down = false;
     })
+
+    // canvas mouse move
+    canvas.mousemove(function (event) {
+        mouse.position.x = event.clientX / width;
+        mouse.position.y = event.clientY / height;
+        mouse.move = true;
+    });
 
     var socket = io();
     
