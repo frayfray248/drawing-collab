@@ -17,6 +17,16 @@ app.get('/', (req, res) => {
     res.render("index");
 })
 
+// sockets
+io.on('connection', (socket) => {
+    console.log(`Client ${socket.id} connected`);
+
+    // disconnect event
+    socket.on('disconnect', () => {
+        console.log(`Client ${socket.id} disconnected`)
+    })
+});
+
 // start server
 server.listen(3000, () => {
     console.log('listening on port 3000');
