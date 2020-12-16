@@ -2,11 +2,15 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
+const path = require('path');
 
 // objects
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
+
+// server static files
+app.use(express.static(path.join(__dirname, "public")));
 
 // GET request
 app.get('/', (req, res) => {
