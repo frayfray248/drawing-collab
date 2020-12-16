@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // GET request
 app.get('/', (req, res) => {
-    res.send("<h1>Hello World!<h2>");
+    res.render("index");
 })
 
 // start server
