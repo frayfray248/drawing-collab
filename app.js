@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
     res.render("index");
 })
 
+const PORT = process.env.PORT || 3000;
+
 // drawing data
 var lines = [];
 
@@ -42,6 +44,6 @@ io.on('connection', (socket) => {
 });
 
 // start server
-server.listen(3000, () => {
+server.listen(PORT, () => {
     console.log('listening on port 3000');
 })
